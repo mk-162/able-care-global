@@ -96,7 +96,7 @@ export default function HomePage() {
               Welcome to Able Care
             </h1>
             <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto font-light leading-relaxed">
-              Falls prevention and functional health technology, developed at Imperial College London.
+              Falls prevention and functional health technology.
             </p>
           </div>
         </section>
@@ -231,7 +231,7 @@ export default function HomePage() {
       <footer className="bg-white py-10 border-t border-black/8">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <p className="text-xs text-ac-black/50">
-            © {new Date().getFullYear()} Able Care. Falls prevention technology developed at Imperial College London.
+            © {new Date().getFullYear()} Able Care. Falls prevention technology.
           </p>
         </div>
       </footer>
