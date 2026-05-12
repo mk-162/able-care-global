@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BrandmarkWatermark } from "@/components/ui/BrandmarkWatermark";
 
 /**
  * Add a new region by appending to this array.
@@ -48,50 +49,85 @@ const REGIONS = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — blue with aqua accent */}
-      <section className="relative overflow-hidden bg-ac-blue text-white">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-40 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 75% 25%, rgba(0,255,210,0.7), transparent 55%)",
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-20 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 15% 85%, rgba(255,255,255,0.6), transparent 50%)",
-          }}
-        />
-        <div className="relative max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
-          <div className="flex justify-center mb-10 md:mb-12">
-            <Image
-              src="/images/able-care-logo-horizontal-white.svg"
-              alt="Able Care"
-              width={240}
-              height={54}
-              className="h-10 md:h-12 w-auto"
-              priority
-            />
+      {/* Hero — blue with brandmark watermark and crest wave transition */}
+      <div className="relative">
+        <section className="relative overflow-hidden bg-ac-blue text-white">
+          {/* "A" brandmark watermark — bottom-left, white at 7% */}
+          <BrandmarkWatermark
+            color="white"
+            opacity={0.07}
+            className="absolute bottom-[-60px] left-[-40px] w-[520px] z-[1]"
+          />
+
+          {/* Aqua radial highlight top-right */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-40 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle at 78% 22%, rgba(0,255,210,0.65), transparent 55%)",
+            }}
+          />
+          {/* Soft white radial lower-right (counterweight to the brandmark in lower-left) */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-25 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle at 88% 78%, rgba(255,255,255,0.5), transparent 45%)",
+            }}
+          />
+
+          <div className="relative z-10 max-w-5xl mx-auto px-4 py-24 md:py-36 text-center">
+            <div className="flex justify-center mb-10 md:mb-12">
+              <Image
+                src="/images/able-care-logo-horizontal-white.svg"
+                alt="Able Care"
+                width={240}
+                height={54}
+                className="h-10 md:h-12 w-auto"
+                priority
+              />
+            </div>
+            <p className="text-[11px] md:text-xs font-bold uppercase tracking-[0.3em] mb-4 text-ac-aqua">
+              Global
+            </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-5 leading-[1.05]">
+              Welcome to Able Care
+            </h1>
+            <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto font-light leading-relaxed">
+              Falls prevention and functional health technology, developed at Imperial College London.
+            </p>
           </div>
-          <p className="text-[11px] md:text-xs font-bold uppercase tracking-[0.3em] mb-4 text-ac-aqua">
-            Global
-          </p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-5 leading-[1.05]">
-            Welcome to Able Care
-          </h1>
-          <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto font-light leading-relaxed">
-            Falls prevention and functional health technology, developed at Imperial College London.
-          </p>
+        </section>
+
+        {/* Crest wave — carves a curved transition from the blue hero into the white section below */}
+        <div className="absolute left-0 -bottom-px w-full z-30 leading-none" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 82"
+            preserveAspectRatio="none"
+            className="block w-full"
+            style={{ height: "82px", marginBottom: "-1px" }}
+          >
+            <rect width="1440" height="82" fill="#ffffff" />
+            <path
+              fill="#1432FF"
+              d="M0,0 L0,40 C240,80 480,0 720,30 C960,60 1200,20 1440,40 L1440,0 Z"
+            />
+          </svg>
         </div>
-      </section>
+      </div>
 
       {/* Region cards — each card includes its own region-specific resource links */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="max-w-5xl mx-auto px-4">
+      <section className="relative overflow-hidden bg-white py-16 md:py-24">
+        {/* Subtle gradient brandmark in the background, lower-right, blue at 4% */}
+        <BrandmarkWatermark
+          color="#1432FF"
+          opacity={0.04}
+          className="absolute bottom-[-80px] right-[-80px] w-[460px] z-0 hidden md:block"
+        />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4">
           <div className="text-center mb-12 md:mb-14">
             <p className="text-[11px] md:text-xs font-bold uppercase tracking-[0.3em] text-ac-blue mb-3">
               Choose your region
@@ -100,6 +136,7 @@ export default function HomePage() {
               Visit the right Able Care site for you
             </h2>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {REGIONS.map((region) => (
               <div
@@ -110,6 +147,12 @@ export default function HomePage() {
                     "linear-gradient(145deg, #1432FF 0%, #1432FF 65%, #00FFD2 100%)",
                 }}
               >
+                {/* Subtle brandmark in the card corner — white at 6% */}
+                <BrandmarkWatermark
+                  color="white"
+                  opacity={0.08}
+                  className="absolute bottom-[-30px] right-[-40px] w-[220px] z-0"
+                />
                 <div
                   aria-hidden="true"
                   className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-15 -mr-12 -mt-12 pointer-events-none"
@@ -157,7 +200,7 @@ export default function HomePage() {
                   </span>
                 </a>
 
-                {/* Region-specific resource links */}
+                {/* Region-specific resources */}
                 <div className="relative z-10 mt-auto pt-6 border-t border-white/15 space-y-2.5">
                   <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/60 mb-3">
                     Resources
